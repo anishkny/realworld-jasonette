@@ -1,0 +1,81 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Conduit Article (Dynamic)",
+      "actions": {
+        "$foreground": {
+          "type": "$reload"
+        },
+        "$pull": {
+          "type": "$reload"
+        },
+        "$load": {
+          "type": "$network.request",
+          "options": {
+            "url": "{{'https://conduit.productionready.io/api/articles/' + $params.slug}}",
+            "method": "GET"
+          },
+          "success": {
+            "type": "$render"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Conduit Article (Dynamic)",
+            "style": {
+              "font": "HelveticaNeue",
+              "color": "#ffffff",
+              "background": "#5CB85C"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "{{$jason.article.title}}"
+                },
+                {
+                  "type": "label",
+                  "text": "{{new Date($jason.article.createdAt).toDateString()}}"
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "{{$jason.article.author.image}}",
+                      "style": {
+                        "width": "50",
+                        "height": "50",
+                        "corner_radius": "20"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "{{$jason.article.author.username}}"
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "text": "{{($jason.article.favorited ? '💜 ' : '♡ ') + $jason.article.favoritesCount}}"
+                },
+                {
+                  "type": "label",
+                  "text": "{{$jason.article.body}}"
+                },
+                {
+                  "type": "label",
+                  "text": "{{JSON.stringify($jason)}}"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
