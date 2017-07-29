@@ -1,0 +1,89 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Conduit Jason",
+      "actions": {
+        "$foreground": {
+          "type": "$reload"
+        },
+        "$pull": {
+          "type": "$reload"
+        },
+        "$load": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://conduit.productionready.io/api/articles?limit=10&offset=0",
+            "method": "GET"
+          },
+          "success": {
+            "type": "$render"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Conduit Jason",
+            "style": {
+              "font": "HelveticaNeue",
+              "color": "#ffffff",
+              "background": "#5CB85C"
+            }
+          },
+          "sections": [
+            {
+              "items": {
+                "{{#each $jason.articles}}": {
+                  "type": "vertical",
+                  "components": [
+                    {
+                      "type": "horizontal",
+                      "components": [
+                        {
+                          "type": "image",
+                          "url": "{{author.image}}",
+                          "style": {
+                            "width": "50",
+                            "height": "50",
+                            "corner_radius": "20"
+                          }
+                        },
+                        {
+                          "type": "label",
+                          "text": "{{author.username}}"
+                        },
+                        {
+                          "type": "space"
+                        },
+                        {
+                          "type": "label",
+                          "text": "{{(favorited ? '💜 ' : '♡ ') + favoritesCount}}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "label",
+                      "text": "{{(new Date(createdAt)).toDateString()}}"
+                    },
+                    {
+                      "type": "label",
+                      "text": "{{title}}"
+                    },
+                    {
+                      "type": "label",
+                      "text": "{{tagList.join(' ')}}"
+                    },
+                    {
+                      "type": "label",
+                      "text": "Read more..."
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
