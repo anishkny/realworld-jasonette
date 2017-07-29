@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Conduit Jason (Global Feed)",
+      "title": "Conduit Jason",
       "actions": {
         "$foreground": {
           "type": "$reload"
@@ -23,11 +23,29 @@
       "templates": {
         "body": {
           "header": {
-            "title": "Conduit Jason (Global Feed)",
+            "title": "Conduit Jason",
             "style": {
               "font": "HelveticaNeue",
               "color": "#ffffff",
               "background": "#5CB85C"
+            }
+          },
+          "footer": {
+            "tabs": {
+              "items": [
+                {
+                  "text": "🏠",
+                  "url": "https://www.jasonbase.com/things/xLMD.json"
+                },
+                {
+                  "text": "🖋️",
+                  "url": "https://www.jasonbase.com/things/xLMD.json"
+                },
+                {
+                  "text": "👤",
+                  "url": "https://www.jasonbase.com/things/xLMD.json"
+                }
+              ]
             }
           },
           "sections": [
