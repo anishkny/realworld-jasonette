@@ -16,7 +16,13 @@ For more information on how to this works with other frontends/backends, head ov
 
 # How it works
 
-> Describe the general architecture of your app here
+From the website:
+
+> Jasonette is a different way of making native apps.
+> 
+> Instead of programming an app on the device, you simply write a JSON file hosted on a server, and the Jasonette apps fetch and use it to build themselves on-demand whenever you open the app.
+
+For more details, see [Jasonette documentation](http://docs.jasonette.com).
 
 # Getting started
 
@@ -24,6 +30,6 @@ Download the **Jason** app ([iOS](https://itunes.apple.com/us/app/jason./id10955
 
 [https://www.jasonbase.com/things/xLMD.json](https://www.jasonbase.com/things/xLMD.json)
 
-
+See [documentation](http://docs.jasonette.com/jason/).
 
 
