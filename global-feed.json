@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Conduit Jason",
+      "title": "Conduit Jason (Global Feed)",
       "actions": {
         "$foreground": {
           "type": "$reload"
@@ -23,7 +23,7 @@
       "templates": {
         "body": {
           "header": {
-            "title": "Conduit Jason",
+            "title": "Conduit Jason (Global Feed)",
             "style": {
               "font": "HelveticaNeue",
               "color": "#ffffff",
@@ -35,6 +35,12 @@
               "items": {
                 "{{#each $jason.articles}}": {
                   "type": "vertical",
+                  "href": {
+                    "url": "https://jasonbase.com/things/nMMV.json",
+                    "options": {
+                      "slug": "{{slug}}"
+                    }
+                  },
                   "components": [
                     {
                       "type": "horizontal",
@@ -51,13 +57,6 @@
                         {
                           "type": "label",
                           "text": "{{author.username}}"
-                        },
-                        {
-                          "type": "space"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{(favorited ? '💜 ' : '♡ ') + favoritesCount}}"
                         }
                       ]
                     },
@@ -75,7 +74,7 @@
                     },
                     {
                       "type": "label",
-                      "text": "Read more..."
+                      "text": "{{(favorited ? '💜 ' : '♡ ') + favoritesCount}}"
                     }
                   ]
                 }
