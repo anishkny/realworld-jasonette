@@ -32,6 +32,10 @@
           },
           "footer": {
             "tabs": {
+              "style": {
+              "background": "#5CB85C"
+                
+              },
               "items": [
                 {
                   "text": "🏠",
@@ -43,7 +47,7 @@
                 },
                 {
                   "text": "👤",
-                  "url": "https://www.jasonbase.com/things/xLMD.json"
+                  "url": "https://www.jasonbase.com/things/ZBB3.json"
                 }
               ]
             }
