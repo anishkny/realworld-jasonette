@@ -1,0 +1,118 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Conduit Jason (Profile)",
+      "actions": {
+        "$foreground": {
+          "type": "$reload"
+        },
+        "$pull": {
+          "type": "$reload"
+        }
+      }
+    },
+    "body": {
+      "header": {
+        "title": "Conduit Jason (Profile)",
+        "style": {
+          "font": "HelveticaNeue",
+          "color": "#ffffff",
+          "background": "#5CB85C"
+        }
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "label",
+              "text": "Email"
+            },
+            {
+              "name": "email",
+              "type": "textfield"
+            },
+            {
+              "type": "label",
+              "text": "Password"
+            },
+            {
+              "name": "password",
+              "type": "textfield",
+              "style": {
+                "secure": "true"
+              }
+            },
+            {
+              "type": "button",
+              "text": "Sign in",
+              "action": {
+                "type": "$network.request",
+                "options": {
+                  "url": "https://conduit.productionready.io/api/users/login",
+                  "method": "post",
+                  "data": {
+                    "user": {
+                      "email": "what@b.com",
+                      "password": "aaaaaaaa"
+                    }
+                  }
+                },
+                "success": {
+                  "type": "$global.set",
+                  "options": {
+                    "user": "{{$jason}}"
+                  },
+                  "success": {
+                    "type": "$render"
+                  },
+                  "error": {
+                    "type": "$util.banner",
+                    "options": {
+                      "title": "Error setting global"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "$util.banner",
+                  "options": {
+                    "title": "Error signing in",
+                    "type": "error"
+                  }
+                }
+              }
+            },
+            {
+              "type": "label",
+              "text": "{{JSON.stringify($global.user)}}"
+            },
+            {
+              "type": "label",
+              "text": "{{'Random: ' + Math.floor(Math.random()*10000)}}"
+            }
+          ]
+        }
+      ],
+      "footer": {
+        "tabs": {
+          "style": {
+            "background": "#5CB85C"
+          },
+          "items": [
+            {
+              "text": "🏠",
+              "url": "https://www.jasonbase.com/things/xLMD.json"
+            },
+            {
+              "text": "🖋️",
+              "url": "https://www.jasonbase.com/things/xLMD.json"
+            },
+            {
+              "text": "👤",
+              "url": "https://www.jasonbase.com/things/ZBB3.json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
